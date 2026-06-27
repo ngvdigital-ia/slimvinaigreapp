@@ -1,0 +1,304 @@
+<!DOCTYPE html>  
+<html lang="fr">  
+<head>  
+  <meta charset="UTF-8" />  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />  
+  <title>Offre Spéciale — L'Anti-Capitons</title>  
+  <style>  
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {  
+      --blue:     #2176AE;  
+      --blue-dk:  #185D8A;  
+      --blue-lt:  #EAF4FB;  
+      --blue-bd:  #A9D4EF;  
+      --red:      #DC2626;  
+      --red-lt:   #FEF2F2;  
+      --red-bd:   #FCA5A5;  
+      --black:    #111111;  
+      --gray:     #444444;  
+      --muted:    #888888;  
+      --strike:   #AAAAAA;  
+      --border:   #E4E4E4;  
+      --white:    #FFFFFF;  
+    }
+
+    body {  
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,  
+                   'Helvetica Neue', Arial, sans-serif;  
+      background: var(--white);  
+      color: var(--black);  
+      font-size: 17px;  
+      line-height: 1.72;  
+    }
+
+    /* ─── ATTENTION BAR ──────────────────────────────── */  
+    .barra {  
+      background: var(--blue);  
+      color: var(--white);  
+      text-align: center;  
+      padding: 13px 22px;  
+      font-weight: 700;  
+      font-size: 15px;  
+      letter-spacing: .01em;  
+      line-height: 1.5;  
+    }
+
+    /* ─── WRAPPER ────────────────────────────────────── */  
+    .wrap {  
+      max-width: 640px;  
+      margin: 0 auto;  
+      padding: 34px 22px 60px;  
+    }
+
+    /* ─── HEADLINE ───────────────────────────────────── */  
+    .headline {  
+      font-size: clamp(22px, 5vw, 30px);  
+      font-weight: 900;  
+      line-height: 1.25;  
+      color: var(--black);  
+      margin-bottom: 18px;  
+    }  
+    .headline span { color: var(--blue); }
+
+    /* ─── SUBHEADLINE ────────────────────────────────── */  
+    .subheadline {  
+      border-left: 4px solid var(--blue);  
+      background: var(--blue-lt);  
+      padding: 15px 18px;  
+      margin-bottom: 22px;  
+      font-size: clamp(15px, 3.5vw, 17px);  
+      font-weight: 600;  
+      color: #333;  
+      line-height: 1.6;  
+    }
+
+    /* ─── VAGAS (SPOTS COUNTER) ──────────────────────── */  
+    .vagas {  
+      display: flex;  
+      align-items: center;  
+      gap: 12px;  
+      background: var(--red-lt);  
+      border: 1px solid var(--red-bd);  
+      border-left: 5px solid var(--red);  
+      border-radius: 3px;  
+      padding: 15px 18px;  
+      margin: 20px 0;  
+      font-weight: 800;  
+      font-size: clamp(15px, 4vw, 18px);  
+      color: var(--black);  
+      line-height: 1.3;  
+    }
+
+    .vagas-dot {  
+      width: 12px;  
+      height: 12px;  
+      min-width: 12px;  
+      background: var(--red);  
+      border-radius: 50%;  
+      animation: blink 1.4s ease-in-out infinite;  
+    }
+
+    @keyframes blink {  
+      0%, 100% { opacity: 1;   transform: scale(1);    }  
+      50%       { opacity: 0.4; transform: scale(0.75); }  
+    }
+
+    .vagas-sm {  
+      font-size: clamp(14px, 3.5vw, 16px);  
+      padding: 12px 16px;  
+    }
+
+    /* ─── DIVIDER ────────────────────────────────────── */  
+    .sep { border: none; border-top: 1px solid var(--border); margin: 26px 0; }
+
+    /* ─── BODY TEXT ──────────────────────────────────── */  
+    .texto p { margin-bottom: 14px; }  
+    .texto p:last-child { margin-bottom: 0; }
+
+    /* ─── PRICE BLOCK ────────────────────────────────── */  
+    .price-block {  
+      background: var(--blue-lt);  
+      border: 1px solid var(--blue-bd);  
+      border-top: 4px solid var(--blue);  
+      border-radius: 3px;  
+      padding: 26px 20px 20px;  
+      margin: 28px 0 0;  
+      text-align: center;  
+    }
+
+    .price-row {  
+      display: flex;  
+      align-items: center;  
+      justify-content: center;  
+      gap: 14px;  
+      flex-wrap: wrap;  
+    }
+
+    .price-old {  
+      font-size: clamp(26px, 6vw, 34px);  
+      font-weight: 800;  
+      color: var(--strike);  
+      text-decoration: line-through;  
+      text-decoration-thickness: 3px;  
+    }
+
+    .price-arrow {  
+      font-size: clamp(22px, 5vw, 28px);  
+      color: var(--black);  
+      font-weight: 900;  
+    }
+
+    .price-new {  
+      font-size: clamp(44px, 11vw, 62px);  
+      font-weight: 900;  
+      color: var(--blue);  
+      line-height: 1;  
+    }
+
+    .price-note {  
+      margin-top: 10px;  
+      font-size: 13px;  
+      color: var(--muted);  
+      font-style: italic;  
+    }
+
+    /* ─── CTA PRIMARY ────────────────────────────────── */  
+    .cta-yes {  
+      display: block;  
+      width: 100%;  
+      background: var(--blue);  
+      color: var(--white);  
+      border: none;  
+      padding: 22px 20px;  
+      font-size: clamp(14px, 3.5vw, 16px);  
+      font-weight: 800;  
+      text-align: center;  
+      text-transform: uppercase;  
+      letter-spacing: .04em;  
+      line-height: 1.4;  
+      cursor: pointer;  
+      text-decoration: none;  
+      margin: 20px 0 6px;  
+      transition: background .2s;  
+      border-radius: 2px;  
+    }  
+    .cta-yes:hover { background: var(--blue-dk); }
+
+    /* ─── BRIDGE TEXT ────────────────────────────────── */  
+    .bridge {  
+      font-size: 14px;  
+      color: var(--muted);  
+      text-align: center;  
+      padding: 12px 0 4px;  
+      line-height: 1.55;  
+    }
+
+    /* ─── CTA SECONDARY ──────────────────────────────── */  
+    .cta-no {  
+      display: block;  
+      width: 100%;  
+      background: none;  
+      border: none;  
+      color: var(--muted);  
+      font-size: 13px;  
+      text-align: center;  
+      text-decoration: underline;  
+      cursor: pointer;  
+      padding: 8px 0 32px;  
+    }  
+    .cta-no:hover { color: var(--gray); }
+
+    /* ─── P.S. ───────────────────────────────────────── */  
+    .ps {  
+      border-top: 1px solid var(--border);  
+      padding-top: 24px;  
+      font-size: 14px;  
+      color: var(--gray);  
+      font-style: italic;  
+      line-height: 1.72;  
+    }  
+    .ps-label {  
+      font-weight: 900;  
+      font-style: normal;  
+      color: var(--blue);  
+    }
+
+    /* ─── RESPONSIVE ─────────────────────────────────── */  
+    @media (max-width: 440px) {  
+      body { font-size: 16px; }  
+      .barra { font-size: 14px; }  
+      .cta-yes { padding: 20px 12px; }  
+    }  
+  </style>  
+</head>  
+<body>
+
+  <!-- ═══ BARRA ATENÇÃO ═══════════════════════════════ -->  
+  <div class="barra">  
+    ⚠&nbsp; ATTENTION — il ne reste que 10 places à ce prix. Quand elles sont épuisées, cette offre se ferme.  
+  </div>
+
+  <div class="wrap">
+
+    <!-- ─── HEADLINE ──────────────────────────────────── -->  
+    <h1 class="headline">  
+      De <span>19€ à 10€</span> — pour que votre peau accompagne chaque kilo que vous allez perdre, sans avoir à vous cacher cet été.  
+    </h1>
+
+    <!-- ─── SUBHEADLINE ───────────────────────────────── -->  
+    <div class="subheadline">  
+      À mesure que la graisse fond, les capitons deviennent plus visibles. Ce protocole réveille la circulation et lisse les fossettes pendant que vous maigrissez — pas après qu'il soit trop tard.  
+    </div>
+
+    <!-- ─── VAGAS 1 ────────────────────────────────────── -->  
+    <div class="vagas">  
+      <div class="vagas-dot"></div>  
+      <span>Places restantes à ce prix : <strong>10</strong></span>  
+    </div>
+
+    <hr class="sep" />
+
+    <!-- ─── TEXTO NORMAL ──────────────────────────────── -->  
+    <div class="texto">  
+      <p>Vous avez dit non pour 19€.</p>  
+      <p>C'est pourquoi j'ai réduit à 10€ — moins qu'un magazine de supermarché — et il ne reste que 10 places à ce tarif.</p>  
+      <p>Le problème reste le même : à mesure que le SlimVinaigreApp brûle la graisse en profondeur, les nodules superficiels deviennent plus visibles, pas moins. Et sans Le Réveil Circulatoire agissant maintenant, vous pouvez perdre tout le poids que vous voulez et ne toujours pas pouvoir porter ce que vous voulez cet été.</p>  
+      <p>10€. Paiement unique. Garantie inconditionnelle. Dans le même espace membre. Ingrédients disponibles dans n'importe quel supermarché.</p>  
+      <p><strong>Quand les 10 places sont épuisées, ce prix ne revient pas.</strong></p>  
+    </div>
+
+    <!-- ─── DESTAQUE PREÇO ─────────────────────────────── -->  
+    <div class="price-block">  
+      <div class="price-row">  
+        <span class="price-old">19€</span>  
+        <span class="price-arrow">→</span>  
+        <span class="price-new">10€</span>  
+      </div>  
+      <p class="price-note">paiement unique — seulement pour les 10 prochaines places</p>  
+    </div>
+
+    <!-- ─── VAGAS 2 ────────────────────────────────────── -->  
+    <div class="vagas vagas-sm" style="margin-top: 18px;">  
+      <div class="vagas-dot"></div>  
+      <span><strong>10 places restantes</strong></span>  
+    </div>
+
+    <!-- ─── CTA PRIMARY ────────────────────────────────── -->  
+    <a href="#" class="cta-yes">OUI, JE VEUX GARANTIR MA PLACE ET LISSER LES CAPITONS POUR 10€</a>
+
+    <!-- ─── BRIDGE TEXT ────────────────────────────────── -->  
+    <p class="bridge">Si ce n'est toujours pas le bon moment, c'est bien. Mais quand les 10 places sont prises, ce prix disparaît — et l'offre ne rouvre pas à ce tarif.</p>
+
+    <!-- ─── CTA SECONDARY ──────────────────────────────── -->  
+    <button class="cta-no">Non merci, je préfère continuer à couvrir mes jambes</button>
+
+    <!-- ─── P.S. ───────────────────────────────────────── -->  
+    <p class="ps">  
+      <span class="ps-label">P.S. —</span> C'est 10€ pour ne pas arriver à l'été avec le poids que vous vouliez et ne toujours pas vous sentir à l'aise pour porter ce que vous voulez. Les places partent.  
+    </p>
+
+  </div><!-- /wrap -->
+
+</body>  
+</html>

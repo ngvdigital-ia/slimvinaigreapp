@@ -1,0 +1,367 @@
+<!DOCTYPE html>  
+<html lang="fr">  
+<head>  
+  <meta charset="UTF-8" />  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />  
+  <title>Le Coupe-Faim des Françaises</title>  
+  <style>  
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {  
+      --green:    #3A8C3F;  
+      --green-dk: #2C6E30;  
+      --green-lt: #EFF7EF;  
+      --green-bd: #C5E0C6;  
+      --black:    #111111;  
+      --gray:     #444444;  
+      --muted:    #888888;  
+      --light:    #F7F7F7;  
+      --border:   #E4E4E4;  
+      --white:    #FFFFFF;  
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {  
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,  
+                   'Helvetica Neue', Arial, sans-serif;  
+      background: var(--white);  
+      color: var(--black);  
+      font-size: 17px;  
+      line-height: 1.75;  
+    }
+
+    /* ─── ATTENTION BAR ──────────────────────────────── */  
+    .barra {  
+      background: var(--green);  
+      color: var(--white);  
+      text-align: center;  
+      padding: 14px 22px;  
+      font-weight: 700;  
+      font-size: 15px;  
+      letter-spacing: .01em;  
+      line-height: 1.55;  
+    }
+
+    /* ─── WRAPPER ────────────────────────────────────── */  
+    .wrap {  
+      max-width: 680px;  
+      margin: 0 auto;  
+      padding: 0 22px 60px;  
+    }
+
+    /* ─── INTRO SUBHEADLINE ──────────────────────────── */  
+    .intro-sub {  
+      border-left: 4px solid var(--green);  
+      background: var(--green-lt);  
+      padding: 16px 20px;  
+      margin: 28px 0;  
+      font-size: 16px;  
+      font-style: italic;  
+      color: #333;  
+      line-height: 1.65;  
+    }
+
+    /* ─── BODY TEXT ──────────────────────────────────── */  
+    .texto p { margin-bottom: 16px; }  
+    .texto p:last-child { margin-bottom: 0; }
+
+    /* ─── SECTION HEADLINES ──────────────────────────── */  
+    .sh {  
+      font-size: clamp(19px, 4vw, 24px);  
+      font-weight: 800;  
+      line-height: 1.3;  
+      margin: 40px 0 18px;  
+      color: var(--black);  
+    }  
+    .sh--green  { color: var(--green); }  
+    .sh--italic {  
+      font-style: italic;  
+      font-size: clamp(17px, 3.5vw, 20px);  
+      font-weight: 700;  
+      color: var(--black);  
+    }
+
+    /* ─── SEPARATOR ──────────────────────────────────── */  
+    .sep { border: none; border-top: 1px solid var(--border); margin: 36px 0; }
+
+    /* ─── BULLETS ────────────────────────────────────── */  
+    .bullets { list-style: none; margin: 0 0 28px; }  
+    .bullets li {  
+      position: relative;  
+      padding: 13px 0 13px 30px;  
+      border-bottom: 1px solid var(--border);  
+      line-height: 1.6;  
+    }  
+    .bullets li:first-child { border-top: 1px solid var(--border); }  
+    .bullets li::before {  
+      content: '●';  
+      color: var(--green);  
+      font-size: 10px;  
+      position: absolute;  
+      left: 8px;  
+      top: 17px;  
+    }
+
+    /* ─── SOCIAL PROOF ───────────────────────────────── */  
+    .proof {  
+      border-left: 4px solid var(--green);  
+      background: var(--green-lt);  
+      padding: 22px 24px;  
+      margin: 24px 0;  
+      font-style: italic;  
+      line-height: 1.75;  
+      color: #333;  
+    }  
+    .proof-source {  
+      margin-top: 12px;  
+      font-size: 13px;  
+      color: var(--muted);  
+      font-style: normal;  
+    }
+
+    /* ─── PRICE BOX ──────────────────────────────────── */  
+    .price-box {  
+      background: var(--green-lt);  
+      border: 1px solid var(--green-bd);  
+      border-top: 4px solid var(--green);  
+      border-radius: 3px;  
+      padding: 24px 22px;  
+      margin: 32px 0 8px;  
+      text-align: center;  
+    }  
+    .price-value {  
+      font-size: clamp(38px, 9vw, 52px);  
+      font-weight: 900;  
+      color: var(--green);  
+      line-height: 1;  
+    }  
+    .price-sub {  
+      margin-top: 8px;  
+      font-size: 13px;  
+      color: var(--muted);  
+      letter-spacing: .02em;  
+    }
+
+    /* ─── CTA PRIMARY ────────────────────────────────── */  
+    .cta-yes {  
+      display: block;  
+      width: 100%;  
+      background: var(--green);  
+      color: var(--white);  
+      border: none;  
+      padding: 22px 20px;  
+      font-size: clamp(15px, 3.5vw, 17px);  
+      font-weight: 800;  
+      text-align: center;  
+      text-transform: uppercase;  
+      letter-spacing: .04em;  
+      line-height: 1.4;  
+      cursor: pointer;  
+      text-decoration: none;  
+      margin: 20px 0 6px;  
+      transition: background .2s;  
+      border-radius: 2px;  
+    }  
+    .cta-yes:hover { background: var(--green-dk); }
+
+    /* ─── CTA SECONDARY ──────────────────────────────── */  
+    .cta-no {  
+      display: block;  
+      width: 100%;  
+      background: none;  
+      border: none;  
+      color: var(--muted);  
+      font-size: 13px;  
+      text-align: center;  
+      text-decoration: underline;  
+      cursor: pointer;  
+      padding: 10px 0 36px;  
+    }  
+    .cta-no:hover { color: var(--gray); }
+
+    /* ─── P.S. ───────────────────────────────────────── */  
+    .ps {  
+      border-top: 1px solid var(--border);  
+      padding-top: 28px;  
+      font-size: 15px;  
+      color: var(--gray);  
+      font-style: italic;  
+      line-height: 1.75;  
+    }  
+    .ps-label {  
+      font-weight: 900;  
+      font-style: normal;  
+      color: var(--green);  
+    }
+
+    /* ─── RESPONSIVE ─────────────────────────────────── */  
+    @media (max-width: 480px) {  
+      body { font-size: 16px; }  
+      .barra { font-size: 14px; }  
+      .price-value { font-size: 40px; }  
+      .cta-yes { padding: 20px 14px; }  
+    }  
+  </style>  
+</head>  
+<body>
+
+  <!-- ═══ BARRA ATENÇÃO ═══════════════════════════════ -->  
+  <div class="barra">  
+    ⚠&nbsp; ATTENDEZ : Si vous craquez le soir, ce n'est pas un manque de volonté. C'est un signal hormonal que vous n'avez pas l'outil pour couper — jusqu'à maintenant.  
+  </div>
+
+  <div class="wrap">
+
+    <!-- ─── INTRO SUBHEADLINE ──────────────────────── -->  
+    <div class="intro-sub">  
+      Ce que vous allez lire explique pourquoi certaines femmes traversent des soirées entières sans jamais penser à grignoter — et ce que vous pouvez faire pour en faire partie dès ce soir.  
+    </div>
+
+    <!-- ─── TEXTO NORMAL 1 ─────────────────────────── -->  
+    <div class="texto">  
+      <p>C'est encore le docteur Jean-Michel.</p>  
+      <p>Votre accès est toujours en cours de traitement. Ne quittez pas cette page.</p>  
+      <p>Vous êtes parmi les rares femmes qui ont décidé d'aller jusqu'au bout de leur transformation. Cela dit beaucoup sur vous. Mais je dois vous parler de quelque chose que j'aurais dû soulever dès le départ — parce que c'est responsable de l'échec silencieux de la plupart des protocoles de perte de poids.</p>  
+      <p>Ce n'est pas ce qui se passe le matin.</p>  
+      <p><strong>C'est ce qui se passe à partir de 17h.</strong></p>  
+    </div>
+
+    <!-- ─── SH 1 ────────────────────────────────────── -->  
+    <h2 class="sh sh--green">Vous faites l'astuce parfaitement le matin. Mais votre corps reprend le contrôle chaque soir — et ce n'est pas votre faute.</h2>
+
+    <!-- ─── TEXTO NORMAL 2 ─────────────────────────── -->  
+    <div class="texto">  
+      <p>Répondez-moi avec sincérité.</p>  
+      <p>Est-ce qu'il vous arrive de bien manger dans la journée, de faire l'astuce rigoureusement, de tenir — et puis, à un moment précis de la soirée, de sentir une envie monter ? Pas une vraie faim. Plutôt une traction vers quelque chose de sucré, de salé, de consistant. Quelque chose qui "ne compte pas vraiment".</p>  
+      <p>Et peu importe combien de fois vous décidez que non, cette fois vous n'allez pas craquer — l'envie revient le soir suivant.</p>  
+      <p>Si vous vous reconnaissez là-dedans, je vais vous dire exactement ce qui se passe dans votre corps. Et surtout, je vais vous montrer que ce n'est pas une question de caractère.</p>  
+    </div>
+
+    <!-- ─── SH 2 ────────────────────────────────────── -->  
+    <h2 class="sh">Ce n'est pas votre faim. C'est la ghréline — et après 35 ans, elle est beaucoup plus difficile à ignorer.</h2>
+
+    <!-- ─── TEXTO NORMAL 3 ─────────────────────────── -->  
+    <div class="texto">  
+      <p>La ghréline est l'hormone de la faim. Elle est naturellement régulée par les hormones GLP-1 et GIP — les mêmes que votre astuce active pendant la journée.</p>  
+      <p>C'est précisément pour ça que le Mounjaro et l'Ozempic coupent l'appétit si efficacement : ils suppriment la ghréline pendant des heures.</p>  
+      <p>Votre astuce fait la même chose, naturellement, pendant la journée.</p>  
+      <p>Mais voici ce que personne ne vous dit.</p>  
+      <p>Après 35 ans, et encore plus après 40, les niveaux de ghréline ont tendance à pic en fin d'après-midi et en soirée. Souvent indépendamment de ce que vous avez mangé. Indépendamment de votre régularité. Indépendamment de votre discipline.</p>  
+      <p>C'est un mécanisme biologique lié aux changements hormonaux naturels de cette période de la vie.</p>  
+      <p>Et contre un pic hormonal, la volonté seule ne peut pas grand-chose. Pas parce que vous êtes faible. Parce que vous n'avez pas encore eu l'outil qui agit directement sur la source.</p>  
+    </div>
+
+    <!-- ─── SH 3 ────────────────────────────────────── -->  
+    <h2 class="sh sh--green">Une seule soirée de grignotage peut effacer jusqu'à 3 jours de progression avec l'astuce.</h2>
+
+    <!-- ─── TEXTO NORMAL 4 ─────────────────────────── -->  
+    <div class="texto">  
+      <p>Faites le calcul avec moi.</p>  
+      <p>Pendant la journée, l'astuce brûle de la graisse. Elle crée un déficit calorique réel — là où votre transformation se construit, brique après brique.</p>  
+      <p>Mais un soir de grignotage non contrôlé — deux biscuits, un carré de chocolat, quelques crackers "pour finir le paquet" — représente facilement 300 à 500 calories.</p>  
+      <p>Ce sont exactement les mêmes calories que l'astuce a éliminées dans la journée.</p>  
+      <p>Le lendemain matin, vous recommencez à zéro. Pas à moins un. À zéro.</p>  
+      <p>Si ça se produit 3, 4, 5 soirs par semaine — et c'est le cas pour la majorité des femmes, parce que c'est un signal biologique qui revient, pas une habitude qu'on peut briser avec de la détermination — alors votre balance ne reflète pas du tout l'effort que vous fournissez.</p>  
+      <p>Vous travaillez. Vous ne le voyez pas. Et vous ne comprenez pas pourquoi.</p>  
+    </div>
+
+    <!-- ─── SH 4 ────────────────────────────────────── -->  
+    <h2 class="sh">Les femmes qui maigrissent sans jamais se priver ne sont pas des exceptions. Elles ont juste quelque chose que vous n'aviez pas encore.</h2>
+
+    <!-- ─── TEXTO NORMAL 5 ─────────────────────────── -->  
+    <div class="texto">  
+      <p>Je dois vous dire quelque chose que j'observe depuis plus de 40 ans dans ce domaine.</p>  
+      <p>Il n'y a pas de femme sans volonté. Il y a des femmes dont les outils ne couvrent pas tous les moments de la journée.</p>  
+      <p>Vous avez peut-être croisé des femmes qui semblent manger ce qu'elles veulent, ne jamais compter, ne jamais se battre contre leurs envies — et rester minces. Ce n'est pas de la chance. Ce n'est pas de la génétique.</p>  
+      <p>C'est que leur corps reçoit, d'une façon ou d'une autre, le signal de satiété avant que l'envie prenne les commandes. Leur ghréline ne fait pas de pic. Leur corps ne cherche pas ailleurs ce qu'il a déjà.</p>  
+      <p>C'est précisément ce que j'ai décidé de créer pour vous.</p>  
+    </div>
+
+    <!-- ─── SH 5 ────────────────────────────────────── -->  
+    <h2 class="sh sh--green">J'ai développé quelque chose de précis pour ce moment — et uniquement pour ce moment.</h2>
+
+    <!-- ─── TEXTO NORMAL 6 ─────────────────────────── -->  
+    <div class="texto">  
+      <p>Pas pour brûler plus de graisse — le SlimVinaigreApp fait ce travail. Pas pour dégonfler le ventre — nous avons vu ça. Pour une chose : couper le signal de ghréline avant qu'il arrive.</p>  
+      <p>Une dose naturelle, prise avant les moments à risque de votre journée, qui active directement les récepteurs de satiété de votre corps. Votre organisme reçoit le message qu'il cherchait — et cesse de le chercher dans le placard.</p>  
+      <p>Vous ne résistez pas. Vous n'avez plus à résister.</p>  
+      <p>L'envie ne vient pas.</p>  
+      <p><strong>C'est L'Interrupteur de Satiété.</strong></p>  
+    </div>
+
+    <!-- ─── SH 6 — PRODUCT REVEAL ─────────────────── -->  
+    <h2 class="sh sh--green">Le Coupe-Faim des Françaises : rejoindre les femmes qui traversent leurs soirées sans jamais avoir à se battre contre elles-mêmes.</h2>
+
+    <!-- ─── TEXTO NORMAL 7 ─────────────────────────── -->  
+    <div class="texto">  
+      <p>Le Coupe-Faim des Françaises est un protocole de dose naturelle personnalisé, intégré directement dans votre espace membre SlimVinaigreApp.</p>  
+      <p>Comme pour tout le reste, l'application calcule la combinaison exacte pour votre profil — selon votre âge et votre historique — et vous indique précisément quand la prendre pour couvrir vos moments à risque.</p>  
+      <p>Les ingrédients sont naturels, sans ordonnance, sans effets secondaires, disponibles dans n'importe quel supermarché. Vous commencez aujourd'hui.</p>  
+      <p>Et ce soir, pour la première fois peut-être depuis des années, vous traverserez votre soirée entière sans que votre placard vous appelle une seule fois.</p>  
+    </div>
+
+    <hr class="sep" />
+
+    <!-- ─── SH 7 — BULLETS ─────────────────────────── -->  
+    <h2 class="sh">Ce que vous n'aurez plus jamais à affronter seule</h2>
+
+    <ul class="bullets">  
+      <li>L'envie de sucre à 17h ou 18h qui arrive sans raison apparente et qui commande le reste de votre soirée</li>  
+      <li>Le grignotage nocturne qui efface silencieusement les progrès que vous avez construits pendant la journée</li>  
+      <li>La lutte intérieure entre ce que vous voulez faire et ce que votre corps réclame — une bataille que vous n'auriez jamais dû mener seule</li>  
+      <li>Le sentiment de culpabilité après avoir craqué — alors que c'était de la biologie, pas un manque de caractère</li>  
+      <li>La stagnation inexpliquée sur la balance après des semaines de régularité — causée uniquement par ce moment de la journée que rien d'autre ne couvrait</li>  
+      <li>Les calories du soir qui annulent le déficit de la journée sans que vous compreniez pourquoi vous ne progressez plus</li>  
+      <li>La sensation que les autres femmes maigrissent sans effort alors que vous, vous devez vous battre à chaque soirée</li>  
+    </ul>
+
+    <hr class="sep" />
+
+    <!-- ─── SH 8 — SOCIAL PROOF QUOTE ─────────────── -->  
+    <h2 class="sh sh--italic">« Ça fait trois semaines que je n'ai pas ouvert le placard à 21h. Avant, c'était chaque soir. »</h2>
+
+    <!-- ─── SOCIAL PROOF BLOCK ─────────────────────── -->  
+    <div class="proof">  
+      <p>J'avais essayé tout ce qu'on m'avait conseillé. Boire un grand verre d'eau avant les repas. Mâcher lentement. Me coucher plus tôt. Certains jours ça tenait. Mais la plupart du temps, à 20h30, j'ouvrais le placard "juste pour voir". Et je finissais par manger quelque chose. Pas beaucoup. Mais assez pour que ma balance reste bloquée pendant des semaines. Depuis que j'ai commencé le protocole, il y a trois semaines, l'envie n'arrive simplement plus. Je ne résiste pas. C'est comme si on avait éteint un interrupteur. J'ai perdu 3 kilos de plus en trois semaines — uniquement parce que mes soirées sont maintenant libres.</p>  
+      <p class="proof-source">Profil composite représentatif des retours reçus de femmes ayant utilisé L'Interrupteur de Satiété</p>  
+    </div>
+
+    <hr class="sep" />
+
+    <!-- ─── SH 9 — PRICE HEADLINE ──────────────────── -->  
+    <h2 class="sh sh--green">27€ — moins que ce que vous dépensez en grignotage en une seule semaine.</h2>
+
+    <!-- ─── TEXTO NORMAL 8 — PRICE BODY ───────────── -->  
+    <div class="texto">  
+      <p>Faisons un calcul honnête.</p>  
+      <p>Un paquet de biscuits. Un carré de chocolat. Quelques crackers. Un yaourt sucré "pour combler". Les petites dépenses du soir que la plupart d'entre nous font sans y penser représentent facilement 10 à 20 euros par semaine.</p>  
+      <p>40 à 80 euros par mois. En nourriture qui effaçait vos progrès.</p>  
+      <p>Ce protocole coûte 27 euros. Une seule fois. Il est conçu pour éliminer le besoin de ces achats — non pas parce que vous vous privez, mais parce que l'envie disparaît avant d'arriver.</p>  
+      <p>En deux semaines, il se rembourse dans votre chariot de courses.</p>  
+      <p>Et surtout : quand vous n'avez plus de grignotage le soir, l'astuce du matin peut enfin produire son plein effet chaque jour, sans être annulée à 21h.</p>  
+      <p>Un seul paiement. Garanti comme tout le reste. Intégré dans le même espace. Rien à installer.</p>  
+      <p>Et comme toujours : quand vous quittez cette page, L'Interrupteur de Satiété n'est plus disponible ici.</p>  
+    </div>
+
+    <!-- ─── PRICE BOX ──────────────────────────────── -->  
+    <div class="price-box">  
+      <div class="price-value">27€</div>  
+      <p class="price-sub">Paiement unique · Sans récurrence · Garanti</p>  
+    </div>
+
+    <!-- ─── CTA PRIMARY ────────────────────────────── -->  
+    <a href="#" class="cta-yes">OUI — J'ACTIVE L'INTERRUPTEUR DE SATIÉTÉ MAINTENANT — 27€ (PAIEMENT UNIQUE)</a>
+
+    <!-- ─── CTA SECONDARY ──────────────────────────── -->  
+    <button class="cta-no">Non merci, je préfère continuer à gérer les envies du soir seule</button>
+
+    <!-- ─── P.S. ───────────────────────────────────── -->  
+    <div class="ps">  
+      <span class="ps-label">P.S. —</span> Nadège faisait l'astuce depuis cinq semaines. Pas un écart le matin. Des repas équilibrés. Une vraie régularité. Mais chaque soir, à partir de 18h, quelque chose prenait le dessus. Pas beaucoup — quelques biscuits, un carré de chocolat. Assez pour remettre à zéro ce que la journée avait construit. Après cinq semaines, la balance avait à peine bougé. Elle ne comprenait pas pourquoi. Elle m'a écrit : "Est-ce que le protocole fonctionne vraiment pour moi ?" La réponse était oui. Ce qui ne fonctionnait pas, c'est qu'elle n'avait aucun outil pour les 17h–21h. Elle a ajouté le protocole un mois plus tard — mais ce mois-là était perdu. Ne soyez pas Nadège.  
+    </div>
+
+  </div><!-- /wrap -->
+
+</body>  
+</html>

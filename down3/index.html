@@ -1,0 +1,361 @@
+<!DOCTYPE html>  
+<html lang="fr">  
+<head>  
+  <meta charset="UTF-8" />  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />  
+  <title>Offre Spéciale — Le Coupe-Faim des Françaises</title>  
+  <style>  
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {  
+      --green:     #3A8C3F;  
+      --green-dk:  #2C6E30;  
+      --green-lt:  #EFF7EF;  
+      --green-bd:  #C5E0C6;  
+      --black:     #111111;  
+      --gray:      #444444;  
+      --muted:     #888888;  
+      --strike:    #AAAAAA;  
+      --border:    #E4E4E4;  
+      --white:     #FFFFFF;  
+      --expired:   #999999;  
+    }
+
+    body {  
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,  
+                   'Helvetica Neue', Arial, sans-serif;  
+      background: var(--white);  
+      color: var(--black);  
+      font-size: 17px;  
+      line-height: 1.72;  
+    }
+
+    /* ─── ATTENTION BAR ──────────────────────────────── */  
+    .barra {  
+      background: var(--green);  
+      color: var(--white);  
+      text-align: center;  
+      padding: 13px 22px;  
+      font-weight: 700;  
+      font-size: 15px;  
+      letter-spacing: .01em;  
+      line-height: 1.5;  
+    }
+
+    /* ─── WRAPPER ────────────────────────────────────── */  
+    .wrap {  
+      max-width: 640px;  
+      margin: 0 auto;  
+      padding: 34px 22px 60px;  
+    }
+
+    /* ─── HEADLINE ───────────────────────────────────── */  
+    .headline {  
+      font-size: clamp(21px, 5vw, 28px);  
+      font-weight: 900;  
+      line-height: 1.28;  
+      color: var(--black);  
+      margin-bottom: 18px;  
+    }  
+    .headline span { color: var(--green); }
+
+    /* ─── SUBHEADLINE ────────────────────────────────── */  
+    .subheadline {  
+      border-left: 4px solid var(--green);  
+      background: var(--green-lt);  
+      padding: 15px 18px;  
+      margin-bottom: 24px;  
+      font-size: clamp(15px, 3.5vw, 17px);  
+      font-weight: 600;  
+      color: #333;  
+      line-height: 1.6;  
+    }
+
+    /* ─── TIMER BOX ──────────────────────────────────── */  
+    .timer-box {  
+      background: var(--green-lt);  
+      border: 2px solid var(--green);  
+      border-radius: 4px;  
+      text-align: center;  
+      padding: 20px 16px 18px;  
+      margin: 20px 0;  
+    }  
+    .timer-label {  
+      font-size: 14px;  
+      color: var(--gray);  
+      letter-spacing: .02em;  
+      margin-bottom: 8px;  
+    }  
+    .timer-display {  
+      font-family: 'Courier New', Courier, monospace;  
+      font-size: clamp(52px, 14vw, 72px);  
+      font-weight: 900;  
+      color: var(--green);  
+      line-height: 1;  
+      letter-spacing: .04em;  
+      transition: color .3s;  
+    }  
+    .timer-display.expired { color: var(--expired); }
+
+    /* ─── DIVIDER ────────────────────────────────────── */  
+    .sep { border: none; border-top: 1px solid var(--border); margin: 26px 0; }
+
+    /* ─── BODY TEXT ──────────────────────────────────── */  
+    .texto p { margin-bottom: 14px; }  
+    .texto p:last-child { margin-bottom: 0; }
+
+    /* ─── PRICE BLOCK ────────────────────────────────── */  
+    .price-block {  
+      background: var(--green-lt);  
+      border: 1px solid var(--green-bd);  
+      border-top: 4px solid var(--green);  
+      border-radius: 3px;  
+      padding: 26px 20px 20px;  
+      margin: 28px 0 0;  
+      text-align: center;  
+    }  
+    .price-row {  
+      display: flex;  
+      align-items: center;  
+      justify-content: center;  
+      gap: 14px;  
+      flex-wrap: wrap;  
+    }  
+    .price-old {  
+      font-size: clamp(24px, 6vw, 32px);  
+      font-weight: 800;  
+      color: var(--strike);  
+      text-decoration: line-through;  
+      text-decoration-thickness: 3px;  
+    }  
+    .price-arrow {  
+      font-size: clamp(20px, 5vw, 26px);  
+      color: var(--black);  
+      font-weight: 900;  
+    }  
+    .price-new {  
+      font-size: clamp(44px, 11vw, 62px);  
+      font-weight: 900;  
+      color: var(--green);  
+      line-height: 1;  
+    }  
+    .price-note {  
+      margin-top: 10px;  
+      font-size: 13px;  
+      color: var(--muted);  
+      font-style: italic;  
+    }
+
+    /* ─── EXPIRED OVERLAY ────────────────────────────── */  
+    #expired-msg {  
+      display: none;  
+      background: #f9f9f9;  
+      border: 1px solid var(--border);  
+      border-top: 4px solid var(--expired);  
+      padding: 18px 20px;  
+      text-align: center;  
+      margin: 20px 0;  
+      color: var(--muted);  
+      font-size: 15px;  
+      font-weight: 600;  
+    }
+
+    /* ─── CTA PRIMARY ────────────────────────────────── */  
+    .cta-yes {  
+      display: block;  
+      width: 100%;  
+      background: var(--green);  
+      color: var(--white);  
+      border: none;  
+      padding: 22px 20px;  
+      font-size: clamp(14px, 3.5vw, 16px);  
+      font-weight: 800;  
+      text-align: center;  
+      text-transform: uppercase;  
+      letter-spacing: .04em;  
+      line-height: 1.4;  
+      cursor: pointer;  
+      text-decoration: none;  
+      margin: 20px 0 6px;  
+      transition: background .2s;  
+      border-radius: 2px;  
+    }  
+    .cta-yes:hover:not(:disabled) { background: var(--green-dk); }  
+    .cta-yes:disabled,  
+    .cta-yes.disabled {  
+      background: var(--expired);  
+      cursor: not-allowed;  
+      pointer-events: none;  
+    }
+
+    /* ─── BRIDGE TEXT ────────────────────────────────── */  
+    .bridge {  
+      font-size: 14px;  
+      color: var(--muted);  
+      text-align: center;  
+      padding: 12px 0 4px;  
+      line-height: 1.55;  
+    }
+
+    /* ─── CTA SECONDARY ──────────────────────────────── */  
+    .cta-no {  
+      display: block;  
+      width: 100%;  
+      background: none;  
+      border: none;  
+      color: var(--muted);  
+      font-size: 13px;  
+      text-align: center;  
+      text-decoration: underline;  
+      cursor: pointer;  
+      padding: 8px 0 32px;  
+    }  
+    .cta-no:hover { color: var(--gray); }
+
+    /* ─── P.S. ───────────────────────────────────────── */  
+    .ps {  
+      border-top: 1px solid var(--border);  
+      padding-top: 24px;  
+      font-size: 14px;  
+      color: var(--gray);  
+      font-style: italic;  
+      line-height: 1.72;  
+    }  
+    .ps-label {  
+      font-weight: 900;  
+      font-style: normal;  
+      color: var(--green);  
+    }
+
+    /* ─── RESPONSIVE ─────────────────────────────────── */  
+    @media (max-width: 440px) {  
+      body { font-size: 16px; }  
+      .barra { font-size: 14px; }  
+      .cta-yes { padding: 20px 12px; }  
+    }  
+  </style>  
+</head>  
+<body>
+
+  <!-- ═══ BARRA ATENÇÃO ═══════════════════════════════ -->  
+  <div class="barra">  
+    ⚠&nbsp; ATTENTION — ce prix n'existe que pendant 5 minutes. Après ça, il disparaît pour toujours.  
+  </div>
+
+  <div class="wrap">
+
+    <!-- ─── HEADLINE ──────────────────────────────────── -->  
+    <h1 class="headline">  
+      De <span>27€ à 17€</span> — parce que je ne veux pas que vous passiez une nuit de plus à lutter contre vos propres envies par manque de 10 euros.  
+    </h1>
+
+    <!-- ─── SUBHEADLINE ───────────────────────────────── -->  
+    <div class="subheadline">  
+      Sans faim à 18h. Sans grignotage le soir. Sans culpabilité. Sans force de volonté. Pour moins qu'une tablette de chocolat par semaine.  
+    </div>
+
+    <!-- ─── TIMER 1 ────────────────────────────────────── -->  
+    <div class="timer-box">  
+      <p class="timer-label">⏱ Votre réduction expire dans :</p>  
+      <div class="timer-display" id="timer1">05:00</div>  
+    </div>
+
+    <hr class="sep" />
+
+    <!-- ─── TEXTO NORMAL ──────────────────────────────── -->  
+    <div class="texto">  
+      <p>Vous avez dit non pour 27€.</p>  
+      <p>Je comprends. C'est pourquoi j'ai réduit à 17€ — et ce prix n'existe que pendant que ce compteur tourne.</p>  
+      <p>Le problème n'a pas changé : le pic de ghréline de fin de journée arrive, et sans L'Interrupteur de Satiété, vous allez vous battre contre lui exactement comme vous l'avez fait jusqu'à maintenant.</p>  
+      <p>Avec lui, l'envie ne vient pas. Pas parce que vous vous êtes privée. Parce que votre corps a reçu le signal dont il avait besoin — et a arrêté de le chercher dans le placard.</p>  
+      <p>17€. Une dose. Sans force de volonté. Sans récurrence. Garantie inconditionnelle. Dans le même espace membre — prêt à utiliser dès aujourd'hui.</p>  
+      <p><strong>Quand le compteur atteint zéro, ce prix disparaît. Il n'y a pas de retour possible.</strong></p>  
+    </div>
+
+    <!-- ─── DESTAQUE PREÇO ─────────────────────────────── -->  
+    <div class="price-block">  
+      <div class="price-row">  
+        <span class="price-old">27€</span>  
+        <span class="price-arrow">→</span>  
+        <span class="price-new">17€</span>  
+      </div>  
+      <p class="price-note">paiement unique — seulement dans les 5 prochaines minutes</p>  
+    </div>
+
+    <!-- ─── TIMER 2 ────────────────────────────────────── -->  
+    <div class="timer-box" style="margin-top: 20px;">  
+      <p class="timer-label">⏱ Temps restant :</p>  
+      <div class="timer-display" id="timer2">05:00</div>  
+    </div>
+
+    <!-- ─── EXPIRED MESSAGE ───────────────────────────── -->  
+    <div id="expired-msg">Cette offre a expiré. Le prix est revenu à 27€.</div>
+
+    <!-- ─── CTA PRIMARY ────────────────────────────────── -->  
+    <a href="#" class="cta-yes" id="cta-main">OUI, JE VEUX ARRÊTER DE LUTTER CONTRE MES ENVIES POUR 17€</a>
+
+    <!-- ─── BRIDGE TEXT ────────────────────────────────── -->  
+    <p class="bridge">Si ce n'est toujours pas le bon moment, c'est bien. Mais quand le compteur atteint zéro, cette offre se ferme — et ne rouvre pas.</p>
+
+    <!-- ─── CTA SECONDARY ──────────────────────────────── -->  
+    <button class="cta-no">Non merci, je préfère continuer à gérer les envies du soir seule</button>
+
+    <!-- ─── P.S. ───────────────────────────────────────── -->  
+    <p class="ps">  
+      <span class="ps-label">P.S. —</span> C'est 10€ de moins pour ne plus jamais passer une soirée à ouvrir le placard sans le vouloir. Le compteur tourne.  
+    </p>
+
+  </div><!-- /wrap -->
+
+  <!-- ═══ COUNTDOWN SCRIPT ════════════════════════════ -->  
+  <script>  
+    (function () {  
+      var DURATION = 5 * 60; // 5 minutes in seconds  
+      var remaining = DURATION;
+
+      var t1 = document.getElementById('timer1');  
+      var t2 = document.getElementById('timer2');  
+      var cta = document.getElementById('cta-main');  
+      var expired = document.getElementById('expired-msg');
+
+      function pad(n) {  
+        return n < 10 ? '0' + n : '' + n;  
+      }
+
+      function render(secs) {  
+        var m = Math.floor(secs / 60);  
+        var s = secs % 60;  
+        return pad(m) + ':' + pad(s);  
+      }
+
+      function tick() {  
+        if (remaining <= 0) {  
+          t1.textContent = '00:00';  
+          t2.textContent = '00:00';  
+          t1.classList.add('expired');  
+          t2.classList.add('expired');
+
+          // Disable CTA  
+          cta.classList.add('disabled');  
+          cta.textContent = 'OFFRE EXPIRÉE';  
+          cta.removeAttribute('href');
+
+          // Show expired message  
+          expired.style.display = 'block';  
+          return;  
+        }
+
+        var str = render(remaining);  
+        t1.textContent = str;  
+        t2.textContent = str;  
+        remaining--;  
+        setTimeout(tick, 1000);  
+      }
+
+      // Start immediately  
+      tick();  
+    })();  
+  </script>
+
+</body>  
+</html>

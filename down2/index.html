@@ -1,0 +1,254 @@
+<!DOCTYPE html>  
+<html lang="fr">  
+<head>  
+  <meta charset="UTF-8" />  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />  
+  <title>Le Ventre Plat 72h — Offre Spéciale</title>  
+  <style>  
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {  
+      --red:     #CC0000;  
+      --red-dk:  #A80000;  
+      --black:   #111111;  
+      --gray:    #555555;  
+      --muted:   #888888;  
+      --strike:  #AAAAAA;  
+      --light:   #F7F7F7;  
+      --border:  #E4E4E4;  
+      --white:   #FFFFFF;  
+    }
+
+    body {  
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,  
+                   'Helvetica Neue', Arial, sans-serif;  
+      background: var(--white);  
+      color: var(--black);  
+      font-size: 17px;  
+      line-height: 1.72;  
+    }
+
+    /* ─── ATTENTION BAR ──────────────────────────────── */  
+    .barra {  
+      background: var(--red);  
+      color: var(--white);  
+      text-align: center;  
+      padding: 13px 20px;  
+      font-weight: 700;  
+      font-size: 15px;  
+      letter-spacing: .01em;  
+      line-height: 1.5;  
+    }
+
+    /* ─── WRAPPER ────────────────────────────────────── */  
+    .wrap {  
+      max-width: 640px;  
+      margin: 0 auto;  
+      padding: 36px 22px 60px;  
+    }
+
+    /* ─── HEADLINE ───────────────────────────────────── */  
+    .headline {  
+      font-size: clamp(22px, 5vw, 30px);  
+      font-weight: 900;  
+      line-height: 1.25;  
+      color: var(--black);  
+      margin-bottom: 18px;  
+      text-align: left;  
+    }  
+    .headline span { color: var(--red); }
+
+    /* ─── SUBHEADLINE ────────────────────────────────── */  
+    .subheadline {  
+      font-size: clamp(16px, 3.5vw, 18px);  
+      font-weight: 600;  
+      color: var(--gray);  
+      line-height: 1.55;  
+      margin-bottom: 30px;  
+      border-left: 4px solid var(--red);  
+      padding-left: 16px;  
+    }
+
+    /* ─── DIVIDER ────────────────────────────────────── */  
+    .sep { border: none; border-top: 1px solid var(--border); margin: 28px 0; }
+
+    /* ─── BODY TEXT ──────────────────────────────────── */  
+    .texto p { margin-bottom: 14px; }  
+    .texto p:last-child { margin-bottom: 0; }
+
+    /* ─── PRICE BLOCK ────────────────────────────────── */  
+    .price-block {  
+      background: var(--light);  
+      border: 1px solid var(--border);  
+      border-top: 4px solid var(--red);  
+      border-radius: 4px;  
+      padding: 28px 20px 24px;  
+      text-align: center;  
+      margin: 32px 0;  
+    }
+
+    .price-row {  
+      display: flex;  
+      align-items: center;  
+      justify-content: center;  
+      gap: 14px;  
+      flex-wrap: wrap;  
+    }
+
+    .price-old {  
+      font-size: clamp(26px, 6vw, 34px);  
+      font-weight: 800;  
+      color: var(--strike);  
+      text-decoration: line-through;  
+      text-decoration-thickness: 3px;  
+    }
+
+    .price-arrow {  
+      font-size: clamp(22px, 5vw, 28px);  
+      color: var(--black);  
+      font-weight: 900;  
+    }
+
+    .price-new {  
+      font-size: clamp(42px, 10vw, 58px);  
+      font-weight: 900;  
+      color: var(--red);  
+      line-height: 1;  
+    }
+
+    .price-sub {  
+      margin-top: 10px;  
+      font-size: 13px;  
+      color: var(--muted);  
+      letter-spacing: .02em;  
+    }
+
+    /* ─── CTA PRIMARY ────────────────────────────────── */  
+    .cta-yes {  
+      display: block;  
+      width: 100%;  
+      background: var(--red);  
+      color: var(--white);  
+      border: none;  
+      padding: 22px 20px;  
+      font-size: clamp(15px, 3.5vw, 17px);  
+      font-weight: 800;  
+      text-align: center;  
+      text-transform: uppercase;  
+      letter-spacing: .04em;  
+      line-height: 1.4;  
+      cursor: pointer;  
+      text-decoration: none;  
+      margin: 8px 0 6px;  
+      transition: background .2s;  
+      border-radius: 2px;  
+    }  
+    .cta-yes:hover { background: var(--red-dk); }
+
+    /* ─── BRIDGE TEXT ────────────────────────────────── */  
+    .bridge {  
+      font-size: 14px;  
+      color: var(--muted);  
+      text-align: center;  
+      padding: 12px 0 4px;  
+      line-height: 1.55;  
+    }
+
+    /* ─── CTA SECONDARY ──────────────────────────────── */  
+    .cta-no {  
+      display: block;  
+      width: 100%;  
+      background: none;  
+      border: none;  
+      color: var(--muted);  
+      font-size: 13px;  
+      text-align: center;  
+      text-decoration: underline;  
+      cursor: pointer;  
+      padding: 8px 0 32px;  
+      line-height: 1.5;  
+    }  
+    .cta-no:hover { color: var(--gray); }
+
+    /* ─── P.S. ───────────────────────────────────────── */  
+    .ps {  
+      border-top: 1px solid var(--border);  
+      padding-top: 24px;  
+      font-size: 14px;  
+      color: var(--gray);  
+      font-style: italic;  
+      line-height: 1.7;  
+    }  
+    .ps-label {  
+      font-weight: 900;  
+      font-style: normal;  
+      color: var(--red);  
+    }
+
+    /* ─── RESPONSIVE ─────────────────────────────────── */  
+    @media (max-width: 440px) {  
+      body { font-size: 16px; }  
+      .barra { font-size: 14px; }  
+      .cta-yes { padding: 20px 14px; }  
+    }  
+  </style>  
+</head>  
+<body>
+
+  <!-- ═══ BARRA ATENÇÃO ═══════════════════════════════ -->  
+  <div class="barra">  
+    ⚠&nbsp; ATTENDEZ — vous êtes sur le point de partir sans ça. Je viens de changer le prix.  
+  </div>
+
+  <div class="wrap">
+
+    <!-- ─── HEADLINE ──────────────────────────────────── -->  
+    <h1 class="headline">  
+      Ventre visiblement plus plat en 72 heures : de <span>37€ à 27€</span>. Ici seulement. Maintenant seulement.  
+    </h1>
+
+    <!-- ─── SUBHEADLINE ───────────────────────────────── -->  
+    <p class="subheadline">  
+      La graisse que vous brûlez déjà est cachée par la rétention d'eau. Ce protocole retire ce voile en 3 jours — et fait apparaître dans le miroir ce que vous avez déjà accompli.  
+    </p>
+
+    <hr class="sep" />
+
+    <!-- ─── TEXTO NORMAL ──────────────────────────────── -->  
+    <div class="texto">  
+      <p>Vous avez dit non pour 37€.</p>  
+      <p>Je comprends. C'est pourquoi je viens de réduire le prix, ici sur cette page, à 27€.</p>  
+      <p>La promesse n'a pas changé : un shot matinal aux ingrédients naturels qui élimine la rétention d'eau et dégonfle l'abdomen en 72 heures — en faisant apparaître dans le miroir ce que le SlimVinaigreApp construit déjà à l'intérieur.</p>  
+      <p>Ce n'est pas un produit de plus. C'est ce qui retire le voile entre votre effort et le résultat que vous allez voir.</p>  
+      <p>27€. Paiement unique. Sans récurrence. Garantie inconditionnelle. Tout intégré dans le même espace membre — rien à installer, rien à télécharger.</p>  
+      <p><strong>Quand vous fermez cette page, ce prix disparaît.</strong></p>  
+    </div>
+
+    <!-- ─── DESTAQUE PREÇO ─────────────────────────────── -->  
+    <div class="price-block">  
+      <div class="price-row">  
+        <span class="price-old">37€</span>  
+        <span class="price-arrow">→</span>  
+        <span class="price-new">27€</span>  
+      </div>  
+      <p class="price-sub">paiement unique · sans récurrence · garanti</p>  
+    </div>
+
+    <!-- ─── CTA SIM ────────────────────────────────────── -->  
+    <a href="#" class="cta-yes">OUI, JE VEUX VOIR MON VENTRE PLAT EN 72H POUR 27€</a>
+
+    <!-- ─── BRIDGE TEXT ────────────────────────────────── -->  
+    <p class="bridge">Si ce n'est toujours pas le bon moment, c'est bien. Mais souvenez-vous : quand vous quittez cette page, ce prix ne revient pas.</p>
+
+    <!-- ─── CTA NÃO ────────────────────────────────────── -->  
+    <button class="cta-no">Non merci, je préfère continuer sans voir la différence en 72h</button>
+
+    <!-- ─── P.S. ───────────────────────────────────────── -->  
+    <p class="ps">  
+      <span class="ps-label">P.S. —</span> C'est seulement 10€ de moins pour ne plus passer une seule semaine à regarder un ventre qui ne reflète pas le travail que vous faites déjà.  
+    </p>
+
+  </div><!-- /wrap -->
+
+</body>  
+</html>

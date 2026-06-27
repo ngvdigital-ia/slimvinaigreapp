@@ -1,0 +1,360 @@
+<!DOCTYPE html>  
+<html lang="fr">  
+<head>  
+  <meta charset="UTF-8" />  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />  
+  <title>L'Anti-Capitons</title>  
+  <style>  
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {  
+      --blue:    #2176AE;  
+      --blue-dk: #185D8A;  
+      --blue-lt: #EAF4FB;  
+      --blue-bd: #A9D4EF;  
+      --black:   #111111;  
+      --gray:    #444444;  
+      --muted:   #888888;  
+      --light:   #F7F7F7;  
+      --border:  #E4E4E4;  
+      --white:   #FFFFFF;  
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {  
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,  
+                   'Helvetica Neue', Arial, sans-serif;  
+      background: var(--white);  
+      color: var(--black);  
+      font-size: 17px;  
+      line-height: 1.75;  
+    }
+
+    /* ─── ATTENTION BAR ──────────────────────────────── */  
+    .barra {  
+      background: var(--blue);  
+      color: var(--white);  
+      text-align: center;  
+      padding: 14px 22px;  
+      font-weight: 700;  
+      font-size: 15px;  
+      letter-spacing: .01em;  
+      line-height: 1.55;  
+    }
+
+    /* ─── WRAPPER ────────────────────────────────────── */  
+    .wrap {  
+      max-width: 680px;  
+      margin: 0 auto;  
+      padding: 0 22px 60px;  
+    }
+
+    /* ─── INTRO SUBHEADLINE ──────────────────────────── */  
+    .intro-sub {  
+      border-left: 4px solid var(--blue);  
+      background: var(--blue-lt);  
+      padding: 16px 20px;  
+      margin: 28px 0;  
+      font-size: 16px;  
+      font-style: italic;  
+      color: #333;  
+      line-height: 1.65;  
+    }
+
+    /* ─── BODY TEXT ──────────────────────────────────── */  
+    .texto p { margin-bottom: 16px; }  
+    .texto p:last-child { margin-bottom: 0; }
+
+    /* ─── SECTION HEADLINES ──────────────────────────── */  
+    .sh {  
+      font-size: clamp(19px, 4vw, 24px);  
+      font-weight: 800;  
+      line-height: 1.3;  
+      margin: 40px 0 18px;  
+      color: var(--black);  
+    }  
+    .sh--blue   { color: var(--blue); }  
+    .sh--italic {  
+      font-style: italic;  
+      font-size: clamp(17px, 3.5vw, 20px);  
+      font-weight: 700;  
+      color: var(--black);  
+    }
+
+    /* ─── SEPARATOR ──────────────────────────────────── */  
+    .sep { border: none; border-top: 1px solid var(--border); margin: 36px 0; }
+
+    /* ─── BULLETS ────────────────────────────────────── */  
+    .bullets { list-style: none; margin: 0 0 28px; }  
+    .bullets li {  
+      position: relative;  
+      padding: 13px 0 13px 30px;  
+      border-bottom: 1px solid var(--border);  
+      line-height: 1.6;  
+    }  
+    .bullets li:first-child { border-top: 1px solid var(--border); }  
+    .bullets li::before {  
+      content: '●';  
+      color: var(--blue);  
+      font-size: 10px;  
+      position: absolute;  
+      left: 8px;  
+      top: 17px;  
+    }
+
+    /* ─── SOCIAL PROOF ───────────────────────────────── */  
+    .proof {  
+      border-left: 4px solid var(--blue);  
+      background: var(--blue-lt);  
+      padding: 22px 24px;  
+      margin: 24px 0;  
+      font-style: italic;  
+      line-height: 1.75;  
+      color: #333;  
+    }  
+    .proof-source {  
+      margin-top: 12px;  
+      font-size: 13px;  
+      color: var(--muted);  
+      font-style: normal;  
+    }
+
+    /* ─── PRICE BOX ──────────────────────────────────── */  
+    .price-box {  
+      background: var(--blue-lt);  
+      border: 1px solid var(--blue-bd);  
+      border-top: 4px solid var(--blue);  
+      border-radius: 3px;  
+      padding: 26px 22px 22px;  
+      margin: 32px 0 8px;  
+      text-align: center;  
+    }  
+    .price-value {  
+      font-size: clamp(38px, 9vw, 54px);  
+      font-weight: 900;  
+      color: var(--blue);  
+      line-height: 1;  
+    }  
+    .price-sub {  
+      margin-top: 8px;  
+      font-size: 13px;  
+      color: var(--muted);  
+      letter-spacing: .02em;  
+    }
+
+    /* ─── CTA PRIMARY ────────────────────────────────── */  
+    .cta-yes {  
+      display: block;  
+      width: 100%;  
+      background: var(--blue);  
+      color: var(--white);  
+      border: none;  
+      padding: 22px 20px;  
+      font-size: clamp(14px, 3.5vw, 16px);  
+      font-weight: 800;  
+      text-align: center;  
+      text-transform: uppercase;  
+      letter-spacing: .04em;  
+      line-height: 1.4;  
+      cursor: pointer;  
+      text-decoration: none;  
+      margin: 20px 0 6px;  
+      transition: background .2s;  
+      border-radius: 2px;  
+    }  
+    .cta-yes:hover { background: var(--blue-dk); }
+
+    /* ─── CTA SECONDARY ──────────────────────────────── */  
+    .cta-no {  
+      display: block;  
+      width: 100%;  
+      background: none;  
+      border: none;  
+      color: var(--muted);  
+      font-size: 13px;  
+      text-align: center;  
+      text-decoration: underline;  
+      cursor: pointer;  
+      padding: 10px 0 36px;  
+    }  
+    .cta-no:hover { color: var(--gray); }
+
+    /* ─── P.S. ───────────────────────────────────────── */  
+    .ps {  
+      border-top: 1px solid var(--border);  
+      padding-top: 28px;  
+      font-size: 15px;  
+      color: var(--gray);  
+      font-style: italic;  
+      line-height: 1.75;  
+    }  
+    .ps-label {  
+      font-weight: 900;  
+      font-style: normal;  
+      color: var(--blue);  
+    }
+
+    /* ─── RESPONSIVE ─────────────────────────────────── */  
+    @media (max-width: 480px) {  
+      body { font-size: 16px; }  
+      .barra { font-size: 14px; }  
+      .price-value { font-size: 40px; }  
+      .cta-yes { padding: 20px 14px; }  
+    }  
+  </style>  
+</head>  
+<body>
+
+  <!-- ═══ BARRA ATENÇÃO ═══════════════════════════════ -->  
+  <div class="barra">  
+    ⚠&nbsp; UNE DERNIÈRE CHOSE : Votre graisse va fondre — et c'est précisément à ce moment-là que les capitons deviennent plus visibles. Voici comment les effacer pendant que vous maigrissez, pas après.  
+  </div>
+
+  <div class="wrap">
+
+    <!-- ─── INTRO SUBHEADLINE ──────────────────────── -->  
+    <div class="intro-sub">  
+      Ce que vous allez lire ici est le dernier angle de votre transformation — celui que la plupart des femmes découvrent seulement quand il est trop tard.  
+    </div>
+
+    <!-- ─── TEXTO NORMAL 1 ─────────────────────────── -->  
+    <div class="texto">  
+      <p>C'est encore le docteur Jean-Michel.</p>  
+      <p>Vous êtes allée plus loin que 95% des femmes qui commencent un protocole de perte de poids. Ce que vous avez mis en place est réel, et dans les semaines qui arrivent, votre corps va changer.</p>  
+      <p>Mais avant que votre accès soit entièrement finalisé, il y a quelque chose que je dois vous dire — quelque chose que j'aurais voulu dire à des dizaines de femmes avant qu'elles ne le découvrent trop tard.</p>  
+      <p>Ce dont je vais vous parler n'a rien à voir avec la vitesse à laquelle vous allez maigrir. Ça concerne ce que vous allez voir dans le miroir une fois que vous aurez maigri.</p>  
+    </div>
+
+    <!-- ─── SH 1 ────────────────────────────────────── -->  
+    <h2 class="sh sh--blue">Au moment où votre graisse commence à fondre, quelque chose d'inattendu peut apparaître sur votre peau — et ça arrive à la majorité des femmes après 35 ans.</h2>
+
+    <!-- ─── TEXTO NORMAL 2 ─────────────────────────── -->  
+    <div class="texto">  
+      <p>Laissez-moi vous poser une question directe.</p>  
+      <p>En passant la main sur vos cuisses ou vos fessiers maintenant — est-ce que vous sentez une texture irrégulière ? Quelques creux, des petites fossettes, une surface qui n'est pas tout à fait lisse ?</p>  
+      <p>Si oui, je dois vous dire quelque chose d'important.</p>  
+      <p>Ces capitons ne sont pas causés par la quantité de graisse que vous avez. Ils sont causés par la façon dont des nodules de graisse sont piégés sous la peau — et par la qualité de la microcirculation dans ces zones précises.</p>  
+      <p>Et voici la partie que presque personne n'explique.</p>  
+      <p>Quand l'astuce commence à faire fondre vos graisses, les cellules graisseuses profondes rétrécissent. Mais les nodules piégés dans les zones à mauvaise circulation, eux, restent en place. Et à mesure que la peau fine autour d'eux s'affine, ces nodules deviennent plus visibles — pas moins.</p>  
+      <p><strong>Perdre du poids peut rendre les capitons plus apparents, pas moins.</strong></p>  
+      <p>Ce n'est pas une malédiction. Ce n'est pas votre corps qui résiste.</p>  
+      <p>C'est de la physiologie. Et c'est entièrement évitable si vous agissez maintenant — pendant la perte de poids, pas après.</p>  
+    </div>
+
+    <!-- ─── SH 2 ────────────────────────────────────── -->  
+    <h2 class="sh">La vérité que personne ne vous dit : maigrir révèle les capitons. Ce n'est pas une fatalité — c'est un problème de circulation qui a une solution précise.</h2>
+
+    <!-- ─── TEXTO NORMAL 3 ─────────────────────────── -->  
+    <div class="texto">  
+      <p>Voici ce qui se passe exactement.</p>  
+      <p>Dans les cuisses et les fessiers, il existe des zones où la microcirculation sanguine est naturellement moins efficace. Quand la circulation y est pauvre, la graisse ne se draine pas correctement et s'accumule en petits nodules juste sous la peau.</p>  
+      <p>Pendant que l'astuce brûle les graisses en profondeur, ces zones de circulation pauvre peuvent rester bloquées. La graisse profonde part. Mais les nodules superficiels, eux, persistent.</p>  
+      <p>Et quand la peau commence à s'affiner autour, ces nodules ressortent davantage qu'avant.</p>  
+      <p>C'est pour ça que vous pouvez perdre 10, 12, 15 kilos — et ne pas vous reconnaître dans le miroir pour autant.</p>  
+      <p>Pas parce que vous n'avez pas travaillé. Parce qu'un angle de votre transformation n'a pas été couvert.</p>  
+    </div>
+
+    <!-- ─── SH 3 ────────────────────────────────────── -->  
+    <h2 class="sh sh--blue">J'ai vu des femmes perdre 15 kilos et remettre le short dans le placard tout l'été — parce que personne ne les avait prévenues à temps.</h2>
+
+    <!-- ─── TEXTO NORMAL 4 ─────────────────────────── -->  
+    <div class="texto">  
+      <p>Je vais vous dire ce qui me pèse vraiment.</p>  
+      <p>Au fil des années, parmi toutes les femmes que j'ai accompagnées, quelques-unes m'ont écrit un message que je ne veux plus jamais recevoir.</p>  
+      <p>Elles avaient perdu leur poids. La balance avait bougé de façon significative. Leurs vêtements tombaient différemment. Et pourtant, quand elles regardaient leurs cuisses et leurs fessiers, la peau n'avait pas suivi comme elles l'espéraient.</p>  
+      <p>Des femmes qui avaient tout fait juste. Qui avaient été rigoureuses, patientes, disciplinées. Et qui, cet été-là, ont remis le short dans le placard.</p>  
+      <p>Ce n'était pas une fatalité.</p>  
+      <p>C'était une lacune dans leur protocole — un angle que personne n'avait pensé à couvrir pendant la perte de poids. Et le moment où on peut agir, c'est maintenant — pendant que la graisse fond, pas après qu'elle soit partie.</p>  
+      <p>Je ne veux pas que vous ayez à écrire ce message-là.</p>  
+    </div>
+
+    <!-- ─── SH 4 ────────────────────────────────────── -->  
+    <h2 class="sh">J'ai créé quelque chose de précis pour que votre peau accompagne votre transformation — et non pas qu'elle la contredise dans le miroir.</h2>
+
+    <!-- ─── TEXTO NORMAL 5 ─────────────────────────── -->  
+    <div class="texto">  
+      <p>J'ai décidé de créer un protocole conçu spécifiquement pour ce moment.</p>  
+      <p>Pas pour brûler plus de graisse — le SlimVinaigreApp s'en charge déjà. Pas pour drainer l'eau — nous avons vu ça. Pas pour couper les envies — c'est couvert.</p>  
+      <p>Pour une seule chose : réveiller la microcirculation dans les zones où les capitons se forment, et permettre à la graisse résiduelle de se décomposer et de s'éliminer pendant que votre corps fond.</p>  
+      <p>Une boisson naturelle, composée d'ingrédients qui activent la circulation locale et brisent les nodules sous-cutanés responsables des fossettes.</p>  
+      <p>Sans crème. Sans massages. Sans appareil. Sans effort supplémentaire.</p>  
+      <p>Votre corps fond. Votre peau suit. Et dans le miroir, vous voyez enfin une victoire entière.</p>  
+      <p><strong>C'est Le Réveil Circulatoire.</strong></p>  
+    </div>
+
+    <!-- ─── SH 5 — PRODUCT REVEAL ─────────────────── -->  
+    <h2 class="sh sh--blue">L'Anti-Capitons : effacer ce que la perte de poids révèle, pendant que vous maigrissez — pour que votre peau reflète tout ce que vous avez accompli.</h2>
+
+    <!-- ─── TEXTO NORMAL 6 ─────────────────────────── -->  
+    <div class="texto">  
+      <p>L'Anti-Capitons est un protocole de boisson naturelle personnalisé, intégré directement dans votre espace membre SlimVinaigreApp.</p>  
+      <p>L'application calcule la combinaison exacte pour votre profil. Vous la prenez selon le protocole, et votre circulation se réveille dans les zones qui en avaient le plus besoin — cuisses internes, extérieures, fessiers.</p>  
+      <p>Les ingrédients sont naturels, sans effets secondaires, disponibles dans n'importe quel supermarché. Pas de commande à passer. Pas d'attente.</p>  
+      <p>Et dans quelques semaines, quand vous poserez la main sur vos cuisses, vous sentirez une texture que vous n'aviez peut-être pas sentie depuis des années.</p>  
+    </div>
+
+    <hr class="sep" />
+
+    <!-- ─── SH 6 — BULLETS ─────────────────────────── -->  
+    <h2 class="sh">Ce que votre peau va retrouver pendant que votre corps fond</h2>
+
+    <ul class="bullets">  
+      <li>Une texture de peau visiblement plus uniforme sur les cuisses et les fessiers — là où les fossettes étaient les plus marquées depuis des années</li>  
+      <li>La réduction progressive des nodules sous-cutanés qui créaient l'effet "peau d'orange" même chez des femmes déjà minces</li>  
+      <li>Une microcirculation réactivée dans les zones de stagnation chronique — les mêmes zones que les crèmes de surface n'atteignent jamais</li>  
+      <li>Une peau qui accompagne la fonte des graisses en temps réel — au lieu de la contredire dans le miroir au moment où vous avez le plus besoin de vous voir</li>  
+      <li>La liberté de porter ce que vous voulez le prochain été — sans penser à couvrir vos jambes ou à ajuster votre position pour cacher quelque chose</li>  
+      <li>Un protocole intégré en moins de 2 minutes dans votre routine existante — sans massage, sans appareil, sans effort supplémentaire de votre part</li>  
+      <li>La certitude que votre investissement dans le SlimVinaigreApp produira une transformation visible partout — et pas seulement sur la balance</li>  
+    </ul>
+
+    <hr class="sep" />
+
+    <!-- ─── SH 7 — SOCIAL PROOF QUOTE ─────────────── -->  
+    <h2 class="sh sh--italic">« J'ai perdu 9 kilos. Et pour la première fois depuis 10 ans, j'ai porté un short cet été. »</h2>
+
+    <!-- ─── SOCIAL PROOF BLOCK ─────────────────────── -->  
+    <div class="proof">  
+      <p>J'avais perdu 9 kilos en deux mois avec l'astuce du vinaigre. La balance avait bougé. Mes vêtements tombaient différemment. Mais mes cuisses — elles ressemblaient encore à ce qu'elles étaient avant. Presque pires par endroits, parce que la peau s'était affinée autour. J'avais ajouté L'Anti-Capitons au moment où j'avais commencé l'astuce, donc les deux travaillaient en même temps. Après six semaines, j'ai regardé mes cuisses au réveil et j'ai vu quelque chose que je n'avais pas vu depuis au moins dix ans : une peau presque lisse. Cet été, j'ai porté un short pour la première fois depuis 2013. Pas parce que je suis parfaite. Parce que je n'avais plus rien à cacher.</p>  
+      <p class="proof-source">Profil composite représentatif des retours reçus de femmes ayant utilisé Le Réveil Circulatoire</p>  
+    </div>
+
+    <hr class="sep" />
+
+    <!-- ─── SH 8 — PRICE HEADLINE ──────────────────── -->  
+    <h2 class="sh sh--blue">19€ — moins qu'un tube de crème anti-cellulite qui traite la surface et laisse la cause intacte.</h2>
+
+    <!-- ─── TEXTO NORMAL 7 — PRICE BODY ───────────── -->  
+    <div class="texto">  
+      <p>Parlons franchement.</p>  
+      <p>Un bon gel anti-cellulite en pharmacie coûte entre 20 et 40 euros. La plupart des femmes en achètent deux, trois, quatre par an — parce qu'elles espèrent que celui-ci sera différent. 60 à 160 euros par an en crèmes qui agissent sur la surface et n'atteignent jamais les nodules sous-cutanés responsables des fossettes.</p>  
+      <p>Les traitements professionnels — pressothérapie, palper-rouler, endermologie — coûtent entre 50 et 80 euros la séance. Les praticiens recommandent 10 à 15 séances pour un résultat visible. Ce sont 500 à 1 200 euros, des rendez-vous à poser, des déplacements à organiser, des semaines d'attente.</p>  
+      <p>Ce protocole coûte 19 euros. Une seule fois. Et il agit directement sur la cause — la microcirculation — pas sur ce que vous voyez en surface.</p>  
+      <p>Pensez-y autrement.</p>  
+      <p>Vous avez déjà tout mis en place pour transformer votre corps. 19 euros pour que votre peau accompagne cette transformation — pour que le miroir reflète tout ce que vous avez construit — c'est la décision la plus simple de ce funil.</p>  
+      <p>Un seul paiement. Sans abonnement. Couvert par notre garantie inconditionnelle. Intégré dans le même espace membre. Rien à installer, rien à commander.</p>  
+      <p>Et comme toujours : quand vous quittez cette page, L'Anti-Capitons n'est plus disponible ici.</p>  
+    </div>
+
+    <!-- ─── PRICE BOX ──────────────────────────────── -->  
+    <div class="price-box">  
+      <div class="price-value">19€</div>  
+      <p class="price-sub">Paiement unique · Sans abonnement · Garanti</p>  
+    </div>
+
+    <!-- ─── CTA PRIMARY ────────────────────────────── -->  
+    <a href="#" class="cta-yes">OUI — JE RÉVEILLE MA CIRCULATION ET JE PROTÈGE MA PEAU — 19€ (PAIEMENT UNIQUE)</a>
+
+    <!-- ─── CTA SECONDARY ──────────────────────────── -->  
+    <button class="cta-no">Non merci, je continuerai à couvrir mes jambes</button>
+
+    <!-- ─── P.S. ───────────────────────────────────── -->  
+    <div class="ps">  
+      <span class="ps-label">P.S. —</span> Valérie avait perdu 12 kilos. La balance avait bougé comme elle l'avait espéré pendant des années. Ses vêtements tombaient mieux. Mais elle n'a pas porté une seule jupe courte de tout l'été. Pas parce qu'elle n'avait pas maigri. Parce que ses cuisses n'avaient pas suivi. Elle m'a écrit en septembre : "Docteur Jean, j'ai passé l'été à me couvrir alors que j'avais perdu 12 kilos. Je ne savais pas que c'était quelque chose qui pouvait s'arranger pendant la perte de poids." Cette page existait. Cette offre existait. Elle était là, à exactement l'endroit où vous êtes maintenant. Elle a fermé. Et elle a passé son été à se cacher derrière des pantalons. Vous avez encore le temps. Ne soyez pas Valérie.  
+    </div>
+
+  </div><!-- /wrap -->
+
+</body>  
+</html>

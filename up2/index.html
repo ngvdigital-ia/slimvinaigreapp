@@ -1,0 +1,386 @@
+<!DOCTYPE html>  
+<html lang="fr">  
+<head>  
+  <meta charset="UTF-8" />  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />  
+  <title>Le Ventre Plat 72h</title>  
+  <style>  
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {  
+      --red:    #CC0000;  
+      --red-dk: #A80000;  
+      --black:  #111111;  
+      --gray:   #444444;  
+      --light:  #F7F7F7;  
+      --border: #E4E4E4;  
+      --white:  #FFFFFF;  
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {  
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,  
+                   'Helvetica Neue', Arial, sans-serif;  
+      background: var(--white);  
+      color: var(--black);  
+      font-size: 17px;  
+      line-height: 1.75;  
+    }
+
+    /* ─── ATTENTION BAR ──────────────────────────────── */  
+    .barra-atencao {  
+      background: var(--red);  
+      color: var(--white);  
+      text-align: center;  
+      padding: 14px 22px;  
+      font-weight: 700;  
+      font-size: 15px;  
+      line-height: 1.55;  
+      letter-spacing: .01em;  
+    }
+
+    /* ─── WRAPPER ────────────────────────────────────── */  
+    .wrap {  
+      max-width: 680px;  
+      margin: 0 auto;  
+      padding: 0 22px 60px;  
+    }
+
+    /* ─── INTRO SUBHEADLINE ──────────────────────────── */  
+    .intro-sub {  
+      border-left: 4px solid var(--red);  
+      background: var(--light);  
+      padding: 16px 20px;  
+      margin: 28px 0;  
+      font-size: 16px;  
+      font-style: italic;  
+      color: #333;  
+      line-height: 1.65;  
+    }
+
+    /* ─── BODY TEXT ──────────────────────────────────── */  
+    .texto p { margin-bottom: 16px; }  
+    .texto p:last-child { margin-bottom: 0; }
+
+    /* ─── SECTION HEADLINES ──────────────────────────── */  
+    .sh {  
+      font-size: clamp(19px, 4vw, 24px);  
+      font-weight: 800;  
+      line-height: 1.3;  
+      margin: 40px 0 18px;  
+      color: var(--black);  
+    }  
+    .sh--red  { color: var(--red); }  
+    .sh--italic { font-style: italic; font-size: clamp(17px, 3.5vw, 20px); font-weight: 700; }
+
+    /* ─── SEPARATOR ──────────────────────────────────── */  
+    .sep { border: none; border-top: 1px solid var(--border); margin: 36px 0; }
+
+    /* ─── BULLETS ────────────────────────────────────── */  
+    .bullets {  
+      list-style: none;  
+      margin: 0 0 28px;  
+    }  
+    .bullets li {  
+      position: relative;  
+      padding: 13px 0 13px 30px;  
+      border-bottom: 1px solid var(--border);  
+      line-height: 1.6;  
+    }  
+    .bullets li:first-child { border-top: 1px solid var(--border); }  
+    .bullets li::before {  
+      content: '●';  
+      color: var(--red);  
+      font-size: 10px;  
+      position: absolute;  
+      left: 8px;  
+      top: 17px;  
+    }
+
+    /* ─── SOCIAL PROOF ───────────────────────────────── */  
+    .proof {  
+      border-left: 4px solid var(--red);  
+      background: var(--light);  
+      padding: 22px 24px;  
+      margin: 24px 0;  
+      font-style: italic;  
+      line-height: 1.75;  
+      color: #333;  
+    }  
+    .proof-source {  
+      margin-top: 12px;  
+      font-size: 13px;  
+      color: #888;  
+      font-style: normal;  
+    }
+
+    /* ─── PRICE BLOCK ────────────────────────────────── */  
+    .price-block {  
+      background: var(--light);  
+      border: 1px solid var(--border);  
+      border-top: 4px solid var(--red);  
+      padding: 30px 24px;  
+      margin: 36px 0;  
+      text-align: center;  
+    }  
+    .price-label {  
+      font-size: 14px;  
+      text-transform: uppercase;  
+      letter-spacing: .08em;  
+      color: var(--gray);  
+      margin-bottom: 8px;  
+    }  
+    .price-value {  
+      font-size: 48px;  
+      font-weight: 900;  
+      color: var(--red);  
+      line-height: 1;  
+    }  
+    .price-sub {  
+      font-size: 14px;  
+      color: #888;  
+      margin-top: 6px;  
+    }
+
+    /* ─── CTA PRIMARY ────────────────────────────────── */  
+    .cta-yes {  
+      display: block;  
+      width: 100%;  
+      background: var(--red);  
+      color: var(--white);  
+      border: none;  
+      padding: 22px 20px;  
+      font-size: 16px;  
+      font-weight: 800;  
+      text-align: center;  
+      text-transform: uppercase;  
+      letter-spacing: .04em;  
+      line-height: 1.4;  
+      cursor: pointer;  
+      text-decoration: none;  
+      margin: 24px 0 14px;  
+      transition: background .2s;  
+    }  
+    .cta-yes:hover { background: var(--red-dk); }
+
+    /* ─── BRIDGE TEXT ────────────────────────────────── */  
+    .bridge {  
+      font-size: 15px;  
+      color: #555;  
+      text-align: center;  
+      margin-bottom: 16px;  
+    }  
+    .bridge p { margin-bottom: 8px; }
+
+    /* ─── CTA SECONDARY ──────────────────────────────── */  
+    .cta-no {  
+      display: block;  
+      width: 100%;  
+      background: none;  
+      border: none;  
+      color: #888;  
+      font-size: 13px;  
+      text-align: center;  
+      text-decoration: underline;  
+      cursor: pointer;  
+      padding: 10px 0 28px;  
+    }  
+    .cta-no:hover { color: #555; }
+
+    /* ─── P.S. ───────────────────────────────────────── */  
+    .ps {  
+      border-top: 1px solid var(--border);  
+      padding-top: 28px;  
+      font-size: 15px;  
+      color: #444;  
+      font-style: italic;  
+      line-height: 1.75;  
+    }  
+    .ps-label {  
+      font-weight: 900;  
+      font-style: normal;  
+      color: var(--red);  
+    }
+
+    /* ─── RESPONSIVE ─────────────────────────────────── */  
+    @media (max-width: 480px) {  
+      body    { font-size: 16px; }  
+      .barra-atencao { font-size: 14px; }  
+      .price-value { font-size: 40px; }  
+      .cta-yes { font-size: 15px; padding: 20px 16px; }  
+    }  
+  </style>  
+</head>  
+<body>
+
+  <!-- ═══ BARRA ATENÇÃO ═══════════════════════════════ -->  
+  <div class="barra-atencao">  
+    ⚠&nbsp; ATTENDEZ : Votre corps brûle déjà de la graisse. Alors pourquoi votre ventre reste-t-il encore gonflé ce matin — et comment tout changer en 72 heures.  
+  </div>
+
+  <div class="wrap">
+
+    <!-- ─── INTRO SUBHEADLINE ──────────────────────── -->  
+    <div class="intro-sub">  
+      Ce que vous allez lire prend moins de 3 minutes. Et peut rendre visible dans le miroir ce que vous avez déjà commencé à gagner.  
+    </div>
+
+    <!-- ─── TEXTO NORMAL 1 ─────────────────────────── -->  
+    <div class="texto">  
+      <p>C'est encore le docteur Jean-Michel.</p>  
+      <p>Votre accès est en cours de finalisation. Ne fermez pas cette page.</p>  
+      <p>Vous venez de rejoindre le groupe de femmes qui ont décidé d'agir au lieu d'attendre. C'est une décision que la majorité des femmes ne prennent jamais — et elle va faire toute la différence dans les semaines qui arrivent.</p>  
+      <p>Mais avant de vous libérer l'accès, il y a quelque chose que je dois vous dire. Quelque chose que presque personne n'explique — et qui est responsable de la frustration la plus courante que j'observe chez les femmes qui commencent l'astuce.</p>  
+    </div>
+
+    <!-- ─── SH 1 ────────────────────────────────────── -->  
+    <h2 class="sh sh--red">Vous brûlez de la graisse. Mais votre ventre reste gonflé. Et ce n'est pas ce que vous imaginez.</h2>
+
+    <!-- ─── TEXTO NORMAL 2 ─────────────────────────── -->  
+    <div class="texto">  
+      <p>Répondez-moi avec honnêteté.</p>  
+      <p>Quand vous vous levez le matin et que vous vous regardez dans le miroir — qu'est-ce que vous voyez ? Est-ce que votre ventre est déjà plat ? Ou est-ce qu'il est encore gonflé, même après des jours d'efforts, même en faisant les choses bien ?</p>  
+      <p>Si la réponse est "encore gonflé", je vais vous dire exactement ce qui se passe.</p>  
+      <p>Ce n'est pas un manque de résultat. Ce n'est pas que l'astuce ne fonctionne pas pour vous. Ce n'est pas votre faute.</p>  
+      <p><strong>C'est de la rétention d'eau.</strong></p>  
+      <p>Et c'est elle — uniquement elle — qui cache tout ce que vous avez déjà commencé à construire.</p>  
+    </div>
+
+    <!-- ─── SH 2 ────────────────────────────────────── -->  
+    <h2 class="sh">Votre corps brûle la graisse par en dessous. Mais l'eau retenue la recouvre comme un voile — et ce voile ment à votre miroir.</h2>
+
+    <!-- ─── TEXTO NORMAL 3 ─────────────────────────── -->  
+    <div class="texto">  
+      <p>Voici ce que la plupart des experts ne vous expliquent jamais.</p>  
+      <p>Quand les hormones GLP-1 et GIP s'activent grâce à l'astuce, votre corps commence à libérer la graisse stockée depuis des mois, parfois des années. C'est réel. C'est en train de se produire dans votre corps, maintenant.</p>  
+      <p>Mais cette graisse, avant de disparaître complètement, traverse une phase de transition. Et pendant cette phase, l'organisme retient temporairement plus d'eau pour compenser le changement interne.</p>  
+      <p>Résultat : vous brûlez. Mais votre ventre reste gonflé. Et dans le miroir, vous ne voyez presque rien changer.</p>  
+      <p>C'est exactement comme si quelqu'un repeignait votre maison… en laissant tous les meubles devant les murs pendant tout le chantier. Le travail est fait. Mais vous ne pouvez pas le voir.</p>  
+      <p>La graisse fondue, c'est le mur fraîchement peint. L'eau retenue, ce sont les meubles qui le cachent.</p>  
+      <p>Et tant que vous ne déplacez pas les meubles, vous ne voyez pas votre victoire.</p>  
+    </div>
+
+    <!-- ─── SH 3 ────────────────────────────────────── -->  
+    <h2 class="sh sh--red">2 à 4 litres d'eau retenue, c'est 2 à 4 kilos sur la balance que vous ne devriez pas voir — et qui vous font croire que vous ne progressez pas.</h2>
+
+    <!-- ─── TEXTO NORMAL 4 ─────────────────────────── -->  
+    <div class="texto">  
+      <p>Faites le calcul avec moi.</p>  
+      <p>Le corps d'une femme adulte peut retenir entre 2 et 4 litres d'eau supplémentaires en période de changement métabolique. Ce sont 2 à 4 kilos que vous voyez sur la balance chaque matin.</p>  
+      <p>Des kilos qui ne sont pas de la graisse. Qui ne sont pas un échec. Qui sont uniquement de l'eau — de l'eau qui couvre les résultats que vous avez déjà obtenus.</p>  
+      <p>Vous investissez votre discipline, votre régularité et votre confiance dans l'astuce. Et chaque matin, vous montez sur la balance et vous voyez un chiffre qui ne reflète pas ce qui se passe vraiment dans votre corps.</p>  
+      <p>Ce n'est pas juste.</p>  
+      <p>Et c'est exactement ce type d'injustice qui pousse les femmes à abandonner trop tôt.</p>  
+    </div>
+
+    <!-- ─── SH 4 ────────────────────────────────────── -->  
+    <h2 class="sh">J'ai vu des femmes qui brûlaient de la graisse depuis deux semaines… arrêter juste avant de voir leur vraie transformation.</h2>
+
+    <!-- ─── TEXTO NORMAL 5 ─────────────────────────── -->  
+    <div class="texto">  
+      <p>Je dois vous dire quelque chose qui me pèse.</p>  
+      <p>Au fil des années, parmi toutes les femmes que j'ai accompagnées, celles qui m'ont fait le plus de peine ne sont pas celles qui ont abandonné parce que l'astuce ne fonctionnait pas.</p>  
+      <p>Ce sont celles qui ont abandonné parce qu'elles ne voyaient pas encore la différence dans le miroir.</p>  
+      <p>Elles brûlaient de la graisse, pour de vrai. Leur corps travaillait. Mais la rétention d'eau camouflait tout. Alors elles concluaient que ce n'était pas pour elles.</p>  
+      <p>Elles partaient. Et quelques semaines plus tard, leur corps aurait enfin montré la différence qu'elles attendaient.</p>  
+      <p>Je ne veux pas que ça vous arrive. Pas après la confiance que vous venez de m'accorder. Pas quand la solution à ce problème est aussi simple que ce que je vais vous montrer maintenant.</p>  
+    </div>
+
+    <!-- ─── SH 5 ────────────────────────────────────── -->  
+    <h2 class="sh sh--red">Ce que j'ai développé pour que vous voyiez dans le miroir ce que votre corps a déjà accompli — en 72 heures.</h2>
+
+    <!-- ─── TEXTO NORMAL 6 ─────────────────────────── -->  
+    <div class="texto">  
+      <p>J'ai décidé de créer quelque chose de précis pour ce moment exact.</p>  
+      <p>Pas pour brûler plus de graisse — le SlimVinaigreApp s'en charge déjà. Pas pour activer davantage vos hormones. Pour une seule chose : enlever ce qui cache tout ce que vous avez déjà gagné.</p>  
+      <p>Un shot matinal, composé d'ingrédients naturels à action drainante, que vous prenez chaque matin en moins de 2 minutes. Il aide votre corps à expulser l'eau retenue, à dégonfler l'intestin, et à laisser apparaître dans le miroir ce que la graisse fondue a déjà commencé à révéler.</p>  
+      <p>Pas de stimulants. Pas de diurétiques agressifs. Pas d'effet rebond.</p>  
+      <p>Juste votre ventre qui retrouve enfin sa vraie forme — celle que des jours d'astuce ont déjà commencé à sculpter.</p>  
+      <p><strong>C'est Le Drainage Express.</strong></p>  
+    </div>
+
+    <!-- ─── SH 6 — PRODUCT REVEAL ─────────────────── -->  
+    <h2 class="sh sh--red">Le Ventre Plat 72h — le protocole du shot matinal pour voir votre résultat là où vous l'attendez depuis le début.</h2>
+
+    <!-- ─── TEXTO NORMAL 7 ─────────────────────────── -->  
+    <div class="texto">  
+      <p>Le Ventre Plat 72h est un protocole de shot matinal personnalisé, intégré directement dans votre espace membre SlimVinaigreApp.</p>  
+      <p>Comme l'application calcule les proportions exactes de l'astuce selon votre profil, elle calcule ici la combinaison précise des ingrédients drainants adaptée à votre corps.</p>  
+      <p>Vous le prenez le matin. Et en 72 heures, vous commencez à voir ce que vous méritez de voir depuis le début.</p>  
+      <p>Les ingrédients sont simples, 100% naturels, et disponibles dans n'importe quel supermarché. Pas de commande à attendre, pas de livraison. Vous commencez demain matin.</p>  
+    </div>
+
+    <hr class="sep" />
+
+    <!-- ─── SH 7 — BULLETS ─────────────────────────── -->  
+    <h2 class="sh">Ce que vous allez voir — et ressentir — dans les 72 premières heures</h2>
+
+    <ul class="bullets">  
+      <li>Votre ventre visiblement plus plat dès le 3ème matin — pas dans quelques semaines, dans les 3 prochains jours</li>  
+      <li>La disparition du gonflement abdominal qui résiste même quand vous mangez peu et faites les choses bien</li>  
+      <li>Une légèreté immédiate dans le ventre — comme si votre corps relâchait une pression que vous portiez sans le remarquer</li>  
+      <li>La balance qui affiche enfin le chiffre réel — sans les 2 à 4 kilos d'eau qui faussaient votre progression depuis le début</li>  
+      <li>Vos vêtements qui commencent à s'ajuster différemment — surtout au niveau de la ceinture, là où l'eau se concentre le plus</li>  
+      <li>Une motivation concrète pour continuer l'astuce, parce que vous voyez enfin dans le miroir ce que votre corps construit depuis des jours</li>  
+      <li>Le protocole complet intégré dans le même espace que votre SlimVinaigreApp — rien à télécharger séparément, aucun nouveau compte</li>  
+    </ul>
+
+    <hr class="sep" />
+
+    <!-- ─── SH 8 — SOCIAL PROOF QUOTE ─────────────── -->  
+    <h2 class="sh sh--italic">« J'avais mesuré mon tour de taille par habitude. J'ai dû recommencer tellement je n'y croyais pas. »</h2>
+
+    <!-- ─── SOCIAL PROOF BLOCK ─────────────────────── -->  
+    <div class="proof">  
+      <p>J'avais commencé l'astuce avec conviction. Dix jours sans tricher, sans écart. Mais mon ventre restait gonflé le matin. Je commençais à me dire que ça ne marchait pas pour moi — que j'étais peut-être de celles pour qui ça ne fonctionne jamais. Puis j'ai ajouté le shot matinal. Le troisième jour, j'ai mesuré mon tour de taille par réflexe, sans vraiment y croire. Et j'ai dû recommencer tellement je n'y croyais pas : deux centimètres de moins. Mon ventre était plat d'une façon que je n'avais pas vue depuis des années. Ce n'était pas la graisse qui avait disparu en 3 jours. C'était tout ce qui la cachait.</p>  
+      <p class="proof-source">Profil composite représentatif des retours reçus de femmes ayant utilisé Le Drainage Express</p>  
+    </div>
+
+    <hr class="sep" />
+
+    <!-- ─── SH 9 — PRICE HEADLINE ──────────────────── -->  
+    <h2 class="sh sh--red">37€ — moins que le prix d'une seule séance de drainage lymphatique qui ne dure qu'une heure.</h2>
+
+    <!-- ─── TEXTO NORMAL 8 — PRICE BODY ───────────── -->  
+    <div class="texto">  
+      <p>Parlons franchement.</p>  
+      <p>Une séance de drainage lymphatique en cabinet spécialisé coûte entre 60 et 120 euros. Et pour des résultats durables, les thérapeutes recommandent en général entre 6 et 10 séances.</p>  
+      <p>On parle de 600 à 1 200 euros minimum, à prendre rendez-vous, à vous déplacer, à recommencer chaque semaine.</p>  
+      <p>Ce protocole peut commencer à produire le même résultat visible en 72 heures. Depuis votre cuisine. Le matin, avant de commencer votre journée.</p>  
+      <p>Pensa-y aussi autrement.</p>  
+      <p>Si votre motivation reste intacte parce que vous voyez enfin la différence dans le miroir, vous ne lâchez pas l'astuce. Et si vous ne lâchez pas l'astuce, les 10, 15 ou 20 kilos que vous voulez perdre ne sont plus une promesse. Ils deviennent une réalité.</p>  
+      <p>37 euros pour ne pas abandonner juste avant de voir votre vraie transformation.</p>  
+      <p>C'est le calcul le plus simple que j'aie à vous proposer aujourd'hui.</p>  
+      <p>Un paiement unique. Sans abonnement. Et couvert par notre garantie de remboursement inconditionnelle — comme tout ce que vous avez déjà.</p>  
+      <p>Cette offre existe uniquement ici, uniquement maintenant. Dès que vous quittez cette page, Le Ventre Plat 72h n'est plus disponible à ce tarif.</p>  
+    </div>
+
+    <!-- ─── PRICE BLOCK ────────────────────────────── -->  
+    <div class="price-block">  
+      <p class="price-label">Paiement unique</p>  
+      <div class="price-value">37€</div>  
+      <p class="price-sub">Sans abonnement · Garantie inconditionnelle</p>  
+    </div>
+
+    <!-- ─── CTA PRIMARY ────────────────────────────── -->  
+    <a href="#" class="cta-yes">OUI — JE VEUX VOIR MON VENTRE PLAT EN 72H — 37€ (PAIEMENT UNIQUE)</a>
+
+    <!-- ─── BRIDGE TEXT ────────────────────────────── -->  
+    <div class="bridge texto">  
+      <p>Demain matin, vous préparez votre premier shot. Dans 72 heures, vous remontez sur la balance et vous vous regardez dans le miroir.</p>  
+      <p>Ce moment-là, je vous le garantis, sera différent de tous les autres matins.</p>  
+    </div>
+
+    <!-- ─── CTA SECONDARY ──────────────────────────── -->  
+    <button class="cta-no">Non merci, je continue sans voir la différence en 72h</button>
+
+    <!-- ─── P.S. ───────────────────────────────────── -->  
+    <div class="ps">  
+      <span class="ps-label">P.S. —</span> Isabelle avait tout fait correctement. Trois semaines d'astuce, sans tricher une seule fois. La balance avait bougé de quelques centaines de grammes. Et dans le miroir, son ventre semblait exactement pareil. Elle a conclu que ça ne marchait pas pour elle. Elle a arrêté. Un mois plus tard, elle m'a écrit : « Docteur Jean, j'ai compris après que c'était la rétention d'eau. J'aurais dû ajouter le shot. Maintenant je dois tout reprendre à zéro. » Elle brûlait. Elle ne voyait juste pas encore. Et un voile de quelques euros entre elle et sa transformation a suffi à lui coûter des mois. Ne soyez pas Isabelle.  
+    </div>
+
+  </div><!-- /wrap -->
+
+</body>  
+</html>
